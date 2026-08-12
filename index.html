@@ -17,57 +17,229 @@ button{cursor:pointer}.action{padding:11px 15px;border:0;border-radius:8px;backg
 .status{padding:12px;border-radius:9px;background:#eee;margin:15px 0}.success{background:#e7f7ef;color:#087443}.error{background:#feeceb;color:#b42318}
 .timer{text-align:center;font-size:32px;font-weight:bold;margin:15px}.item{border-top:1px solid #ddd;padding:12px 0}
 .avatar{width:85px;height:85px;border-radius:50%;object-fit:cover;background:#eee}.social a{margin-right:12px}
-.bottom{display:none}@media(max-width:650px){nav{display:none}main{padding:14px 14px 70px}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd}.bottom button{flex:1;padding:12px 3px;border:0;background:white}}
+.bottom{display:none}@media(max-width:650px){nav{display:none}main{padding:14px 14px 70px}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd}.bottom button{flex:1;padding:10px;border:0;background:transparent}}
 </style>
 </head>
 <body>
 <header><strong>📋 Laporan Demo</strong><span class="demo">OFFLINE • SIMULASI</span></header>
 <div class="layout">
 <nav>
-<button onclick="show('home')">🏠 Beranda</button>
-<button onclick="show('chat')">💬 Chat</button>
-<button onclick="show('notif')">🔔 Notifikasi</button>
-<button onclick="show('profile')">👤 Profil</button>
-<button onclick="show('settings')">⚙️ Pengaturan</button>
+<button type="button" onclick="show('home')">🏠 Beranda</button>
+<button type="button" onclick="show('chat')">💬 Chat</button>
+<button type="button" onclick="show('notif')">🔔 Notifikasi</button>
+<button type="button" onclick="show('profile')">👤 Profil</button>
+<button type="button" onclick="show('settings')">⚙️ Pengaturan</button>
 </nav>
 <main>
 <section id="home" class="page active">
 <div class="card"><h1>Laporan Spam — Simulasi</h1><p>Demo lokal. Tidak mengirim laporan ke Free Fire atau layanan lain.</p></div>
 <div class="card">
-<h2>Cek ID Akun</h2><label>ID Akun</label><input id="account" placeholder="Contoh: 628123456789">
-<label>Durasi</label><select id="duration"><option>3 hari</option><option>7 hari</option><option>Permanen</option></select>
-<div id="status" class="status">Status siap.</div><div id="timer" class="timer">20</div>
-<button id="start" class="action" onclick="startDemo()">Mulai Simulasi</button>
+<h2>Cek ID Akun</h2><label for="account">ID Akun</label><input id="account" placeholder="Contoh: 628123456789">
+<label for="duration">Durasi</label><select id="duration"><option>3 hari</option><option>7 hari</option><option>Permanen</option></select>
+<div id="status" class="status" role="status" aria-live="polite">Status siap.</div><div id="timer" class="timer">20</div>
+<button id="start" type="button" class="action" onclick="startDemo()">Mulai Simulasi</button>
 </div>
-<div class="card"><h2>Riwayat</h2><button class="red action" onclick="clearHistory()">Hapus semua</button><div id="history">Belum ada riwayat.</div></div>
+<div class="card"><h2>Riwayat</h2><button type="button" class="red action" onclick="clearHistory()">Hapus semua</button><div id="history">Belum ada riwayat.</div></div>
 </section>
 <section id="chat" class="page"><div class="card"><h1>💬 Chat</h1><div class="item">Admin Demo<br>Selamat datang.</div></div></section>
 <section id="notif" class="page"><div class="card"><h1>🔔 Notifikasi</h1><div class="item">✅ Simulasi siap digunakan</div><div class="item">ℹ️ Data tersimpan lokal.</div></div></section>
 <section id="profile" class="page"><div class="card"><h1>👤 Profil</h1><img id="avatar" class="avatar" alt="Foto profil">
-<label>Ganti Foto Profil</label><input type="file" id="photo" accept="image/*">
-<label>Username</label><input id="username"><label>Password</label><input id="password" type="password">
-<label>Ulangi Password</label><input id="password2" type="password"><label>Nama</label><input id="name">
-<label>Email — wajib</label><input id="email" type="email" placeholder="nama@gmail.com">
-<div id="profileStatus" class="status">Lengkapi data profil.</div><button class="green action" onclick="saveProfile()">Simpan Profil</button></div></section>
+<label for="photo">Ganti Foto Profil</label><input type="file" id="photo" accept="image/*">
+<label for="username">Username</label><input id="username"><label for="password">Password</label><input id="password" type="password">
+<label for="password2">Ulangi Password</label><input id="password2" type="password"><label for="name">Nama</label><input id="name">
+<label for="email">Email — wajib</label><input id="email" type="email" placeholder="nama@gmail.com">
+<div id="profileStatus" class="status">Lengkapi data profil.</div><button type="button" class="green action" onclick="saveProfile()">Simpan Profil</button></div></section>
 <section id="settings" class="page"><div class="card"><h1>⚙️ Pengaturan Akun & Aplikasi</h1><div class="status success">● Verifikasi sukses</div>
-<h3>Warna Status</h3><button class="red action" onclick="color('Merah')">Merah</button> <button class="gray action" onclick="color('Abu-abu')">Abu-abu</button> <button class="green action" onclick="color('Hijau')">Hijau</button>
+<h3>Warna Status</h3><button type="button" class="red action" onclick="color('Merah')">Merah</button> <button type="button" class="gray action" onclick="color('Abu-abu')">Abu-abu</button> <button type="button" class="green action" onclick="color('Hijau')">Hijau</button>
 <div id="color" class="status">Warna saat ini: Hijau</div></div>
-<div class="card social"><h3>Ikut kami di:</h3><a href="https://www.tiktok.com/" target="_blank">TikTok</a><a href="https://www.instagram.com/" target="_blank">Instagram</a><a href="https://telegram.org/" target="_blank">Telegram</a></div>
-<div class="card"><button class="red action" onclick="alert('Demo logout berhasil.')">Keluar</button></div></section>
+<div class="card social"><h3>Ikut kami di:</h3><a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></div>
+<div class="card"><button type="button" class="red action" onclick="alert('Demo logout berhasil.')">Keluar</button></div></section>
 </main></div>
-<div class="bottom"><button onclick="show('home')">🏠<br>Beranda</button><button onclick="show('chat')">💬<br>Chat</button><button onclick="show('notif')">🔔<br>Notifikasi</button><button onclick="show('profile')">👤<br>Profil</button></div>
+<div class="bottom"><button type="button" onclick="show('home')">🏠<br>Beranda</button><button type="button" onclick="show('chat')">💬<br>Chat</button><button type="button" onclick="show('notif')">🔔<br>Notifikasi</button><button type="button" onclick="show('profile')">👤<br>Profil</button></div>
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
-let timer;
-function startDemo(){let id=account.value.trim();if(!id){status.className='status error';status.textContent='Masukkan ID akun untuk simulasi.';return}let n=20;timerEl();status.className='status';status.textContent='Status Memuat…';start.disabled=true;clearInterval(timer);timer=setInterval(()=>{n--;document.getElementById('timer').textContent=n;if(n<=0){clearInterval(timer);start.disabled=false;status.className='status success';status.textContent='✓ Sukses selesai — simulasi lokal.';let d=JSON.parse(localStorage.reports||'[]');d.unshift({id:id,duration:duration.value,time:new Date().toLocaleString('id-ID')});localStorage.reports=JSON.stringify(d);render() }},1000)}
-function timerEl(){document.getElementById('timer').textContent=20}
-function render(){let d=JSON.parse(localStorage.reports||'[]');history.innerHTML=d.length?d.map(x=>'<div class="item"><b>'+safe(x.id)+'</b> — '+safe(x.duration)+'<br><small>'+safe(x.time)+'</small></div>').join(''):'Belum ada riwayat.'}
-function safe(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function clearHistory(){localStorage.removeItem('reports');render()}
-function color(c){document.getElementById('color').textContent='Warna saat ini: '+c}
-function saveProfile(){let e=email.value.trim(),p=password.value;if(!e||!e.includes('@')){profileStatus.className='status error';profileStatus.textContent='Email wajib diisi dengan benar.';return}if(p!==password2.value){profileStatus.className='status error';profileStatus.textContent='Password tidak sama.';return}localStorage.profile=JSON.stringify({username:username.value,name:name.value,email:e});profileStatus.className='status success';profileStatus.textContent='✓ Profil tersimpan secara lokal.'}
-photo.onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{avatar.src=r.result;localStorage.avatar=r.result};r.readAsDataURL(f)}
-(function(){render();if(localStorage.avatar)avatar.src=localStorage.avatar;let p=JSON.parse(localStorage.profile||'{}');username.value=p.username||'';name.value=p.name||'';email.value=p.email||''})()
+
+// Improved script: explicit element references, robust localStorage, accessible statuses, safe handling
+(function () {
+  // Cache DOM elements explicitly
+  const accountEl = document.getElementById('account');
+  const durationEl = document.getElementById('duration');
+  const statusEl = document.getElementById('status');
+  const timerEl = document.getElementById('timer');
+  const startBtn = document.getElementById('start');
+  const historyEl = document.getElementById('history');
+  const photoEl = document.getElementById('photo');
+  const avatarEl = document.getElementById('avatar');
+  const emailEl = document.getElementById('email');
+  const usernameEl = document.getElementById('username');
+  const passwordEl = document.getElementById('password');
+  const password2El = document.getElementById('password2');
+  const nameEl = document.getElementById('name');
+  const profileStatusEl = document.getElementById('profileStatus');
+
+  // Safe escaping for HTML
+  function safe(x) {
+    return String(x).replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+  }
+
+  // Robust localStorage helpers
+  function loadReports() {
+    try {
+      return JSON.parse(localStorage.getItem('reports') || '[]');
+    } catch (e) {
+      console.warn('Failed to parse reports from localStorage, resetting', e);
+      localStorage.removeItem('reports');
+      return [];
+    }
+  }
+  function saveReports(arr) {
+    try {
+      localStorage.setItem('reports', JSON.stringify(arr));
+    } catch (e) {
+      console.warn('Failed to save reports', e);
+    }
+  }
+
+  // Render history safely
+  function render() {
+    const d = loadReports();
+    if (!d || d.length === 0) {
+      historyEl.textContent = 'Belum ada riwayat.';
+      return;
+    }
+    historyEl.innerHTML = d.map(x =>
+      '<div class="item"><b>' + safe(x.id) + '</b> — ' + safe(x.duration) +
+      '<br><small>' + safe(x.time) + '</small></div>').join('');
+  }
+
+  // Clear history
+  window.clearHistory = function () {
+    localStorage.removeItem('reports');
+    render();
+  };
+
+  // Color choice (keeps existing API)
+  window.color = function (c) {
+    const el = document.getElementById('color');
+    if (el) el.textContent = 'Warna saat ini: ' + c;
+  };
+
+  // Save profile with simple validation
+  window.saveProfile = function () {
+    const e = (emailEl && emailEl.value || '').trim();
+    if (!e || !e.includes('@')) {
+      profileStatusEl.className = 'status error';
+      profileStatusEl.setAttribute('aria-live', 'polite');
+      profileStatusEl.textContent = 'Email wajib diisi dengan benar.';
+      return;
+    }
+    const profile = {
+      username: usernameEl.value || '',
+      name: nameEl.value || '',
+      email: e
+    };
+    try {
+      localStorage.setItem('profile', JSON.stringify(profile));
+      profileStatusEl.className = 'status success';
+      profileStatusEl.setAttribute('aria-live', 'polite');
+      profileStatusEl.textContent = 'Profil tersimpan.';
+    } catch (err) {
+      profileStatusEl.className = 'status error';
+      profileStatusEl.textContent = 'Gagal menyimpan profil.';
+    }
+  };
+
+  // Photo change handler — store small images as DataURL (demo only)
+  if (photoEl) {
+    photoEl.addEventListener('change', function (ev) {
+      const f = ev.target.files && ev.target.files[0];
+      if (!f) return;
+      // Optional: size guard (e.g., 200 KB)
+      const MAX_BYTES = 200 * 1024;
+      if (f.size > MAX_BYTES) {
+        alert('File terlalu besar. Pilih gambar lebih kecil (<=200KB) untuk demo.');
+        return;
+      }
+      const r = new FileReader();
+      r.onload = function () {
+        try {
+          avatarEl.src = r.result;
+          localStorage.setItem('avatar', r.result);
+        } catch (e) {
+          console.warn('Failed to store avatar', e);
+        }
+      };
+      r.readAsDataURL(f);
+    });
+  }
+
+  // Timer / demo runner
+  let timerId = null;
+  window.startDemo = function () {
+    const id = (accountEl && accountEl.value || '').trim();
+    if (!id) {
+      statusEl.className = 'status error';
+      statusEl.setAttribute('aria-live', 'polite');
+      statusEl.textContent = 'Masukkan ID akun untuk simulasi.';
+      return;
+    }
+
+    // Prevent double start
+    startBtn.disabled = true;
+    let remaining = 20;
+    timerEl.textContent = remaining;
+    statusEl.className = 'status';
+    statusEl.setAttribute('aria-live', 'polite');
+    statusEl.textContent = 'Simulasi berjalan...';
+
+    timerId = setInterval(() => {
+      remaining -= 1;
+      timerEl.textContent = remaining;
+      if (remaining <= 0) {
+        clearInterval(timerId);
+        timerId = null;
+        statusEl.className = 'status success';
+        statusEl.textContent = 'Simulasi selesai.';
+        // Save report to history
+        const reports = loadReports();
+        reports.unshift({
+          id: id,
+          duration: (durationEl && durationEl.value) || '',
+          time: new Date().toLocaleString()
+        });
+        saveReports(reports);
+        render();
+        startBtn.disabled = false;
+      }
+    }, 1000);
+  };
+
+  // Initialize UI on load
+  function init() {
+    render();
+    if (localStorage.avatar) {
+      avatarEl.src = localStorage.avatar;
+    }
+    try {
+      const p = JSON.parse(localStorage.getItem('profile') || '{}');
+      usernameEl.value = p.username || '';
+      nameEl.value = p.name || '';
+      emailEl.value = p.email || '';
+    } catch (e) {
+      // ignore
+    }
+    // Make sure status is accessible to screen readers
+    statusEl.setAttribute('role', 'status');
+    profileStatusEl.setAttribute('role', 'status');
+  }
+
+  // Expose some functions globally used by inline onClick attributes
+  window.render = render;
+
+  // Run init
+  init();
+})();
 </script>
 </body>
 </html>
